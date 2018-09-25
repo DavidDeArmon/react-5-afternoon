@@ -1,6 +1,7 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import {connect} from 'react-redux';
+import {updateFirstName,updateLastName,updateEmail} from '../../ducks/reducer'
 class WizardTen extends Component {
     render(){
         return(
@@ -9,9 +10,9 @@ class WizardTen extends Component {
                     
                     <p>What is your name?</p> <br />
 
-                    <input type="text" placeholder="First Name" onChange={this.props.updateFirst}/>
-                    <input type="text" placeholder="Last Name" onChange= {this.props.updateLast}/>
-                    <input type="text" placeholder="email" onChange={this.props.updateEmail}/>
+                    <input type="text" placeholder="First Name" onChange={e=>updateFirstName(e.target.value)}/>
+                    <input type="text" placeholder="Last Name" onChange= {e=>updateLastName(e.target.value)}/>
+                    <input type="text" placeholder="email" onChange={e=>updateEmail(e.target.value)}/>
                     
                     <Link to="/wEleven"><button className="margin-btn"> Next </button></Link>
                 </div>
@@ -19,4 +20,12 @@ class WizardTen extends Component {
         )
     }
 }
-export default WizardTen;
+function mapStateToProp(state){
+    const {firstName,lastName,email} = state;
+    return{
+        firstName,
+        lastName,
+        email
+    }
+}
+export default connect(mapStateToProp,{updateFirstName,updateLastName,updateEmail})(WizardTen);
