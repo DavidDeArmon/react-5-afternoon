@@ -5,17 +5,19 @@ import {updateCredit} from '../../ducks/reducer'
 class WizardSeven extends Component {
 
     render(){
+        const {updateCredit} = this.props
         return(
+            
             <div className="parent-div">
                 <div className="vert-align">                    
                     
                     <p>Estimate your credit score</p> <br />
                     
                     <div className="row">
-                        <Link to="/wEight"><button onClick={e=>updateCredit(e.target.value)}>Excellent</button></Link>
-                        <Link to="/wEight"><button onClick={e=>updateCredit(e.target.value)}>Good</button></Link>
-                        <Link to="/wEight"><button onClick={e=>updateCredit(e.target.value)}>Fair</button></Link>
-                        <Link to="/wEight"><button onClick={e=>updateCredit(e.target.value)}>Poor</button></Link>
+                        <Link to="/wEight"><button onClick={e=>updateCredit('Excellent')}>Excellent</button></Link>
+                        <Link to="/wEight"><button onClick={e=>updateCredit('Good')}>Good</button></Link>
+                        <Link to="/wEight"><button onClick={e=>updateCredit('Fair')}>Fair</button></Link>
+                        <Link to="/wEight"><button onClick={e=>updateCredit('Poor')}>Poor</button></Link>
                     </div>
                 </div>
             </div>
@@ -24,6 +26,7 @@ class WizardSeven extends Component {
 }
 function mapStateToProps(state){
     const {credit} = state;
-    return credit
+    return {
+        credit}
 }
 export default connect(mapStateToProps,{updateCredit})(WizardSeven);

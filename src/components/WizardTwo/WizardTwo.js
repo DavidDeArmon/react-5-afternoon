@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {updateCity} from '../../ducks/reducer'
 class WizardTwo extends Component {
     render(){
+        const {updateCity} = this.props
         return(
             <div className="parent-div">
                 <div className="vert-align">
@@ -20,7 +21,7 @@ class WizardTwo extends Component {
 }
 function mapStateToProps(state){
     const {city} = state;
-    return city
+    return {city}
 }
 
 export default connect(mapStateToProps,{updateCity})(WizardTwo);

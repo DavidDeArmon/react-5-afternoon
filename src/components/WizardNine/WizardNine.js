@@ -6,6 +6,7 @@ import {updateAddressOne,updateAddressTwo,updateAddressThree} from '../../ducks/
 class WizardNine extends Component {
 
     render(){
+        const {updateAddressOne,updateAddressTwo,updateAddressThree} = this.props
         return(
             <div className="parent-div">
                 <div className="vert-align">                    
@@ -23,7 +24,7 @@ class WizardNine extends Component {
         )
     }
 }
-function mapStateToProp(state){
+function mapStateToProps(state){
     const {addressOne,addressTwo,addressThree} = state;
     return{
         addressOne,
@@ -31,4 +32,4 @@ function mapStateToProp(state){
         addressThree
     }
 }
-export default connect(mapStateToProp,{updateAddressOne,updateAddressTwo,updateAddressThree})(WizardNine);
+export default connect(mapStateToProps,{updateAddressOne,updateAddressTwo,updateAddressThree})(WizardNine);

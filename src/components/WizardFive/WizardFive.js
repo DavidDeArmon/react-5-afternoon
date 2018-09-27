@@ -6,22 +6,24 @@ import {updateAgent} from '../../ducks/reducer'
 class WizardFive extends Component {
 
     render(){
+        const {updateAgent} = this.props
         return(
             <div className="parent-div">
                     <div className="vert-align">    
 
                     <p>Are you currently working with a real estate agent?</p> <br />
                     <div className="row">
-                        <Link to="/wSix"><button onClick={e=>updateAgent(e.target.value)}>Yes</button></Link>
-                        <Link to="/wSix"><button onClick={e=>updateAgent(e.target.value)}>No </button></Link>
+                        <Link to="/wSix"><button onClick={e=>updateAgent("true")}>Yes</button></Link>
+                        <Link to="/wSix"><button onClick={e=>updateAgent("false")}>No </button></Link>
                     </div>
                 </div>
             </div>
         )
     }
 }
-function mapStateToProp(state){
-    const {agent} = state;
-    return agent
+function mapStateToProps(state){
+    const {realEstateAgent} = state;
+    return {
+        realEstateAgent}
 }
-export default connect(mapStateToProp, {updateAgent})(WizardFive);
+export default connect(mapStateToProps, {updateAgent})(WizardFive);

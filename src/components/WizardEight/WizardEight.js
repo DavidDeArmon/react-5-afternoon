@@ -6,6 +6,7 @@ import {updateHistory} from '../../ducks/reducer'
 class WizardEight extends Component {
 
     render(){
+        const {updateHistory} = this.props
         return(
             <div className="parent-div">
                     <div className="vert-align">                    
@@ -21,8 +22,8 @@ class WizardEight extends Component {
         )
     }
 }
-function mapStateToProp(state){
+function mapStateToProps(state){
     const {history} = state;
-    return history;
+    return {history};
 }
-export default connect(mapStateToProp, {updateHistory})(WizardEight);
+export default connect(mapStateToProps, {updateHistory})(WizardEight);

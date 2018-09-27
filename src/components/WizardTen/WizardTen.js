@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {updateFirstName,updateLastName,updateEmail} from '../../ducks/reducer'
 class WizardTen extends Component {
     render(){
+        const {updateFirstName,updateLastName,updateEmail} = this.props
         return(
             <div className="parent-div">
                 <div className="vert-align">                    
@@ -20,7 +21,7 @@ class WizardTen extends Component {
         )
     }
 }
-function mapStateToProp(state){
+function mapStateToProps(state){
     const {firstName,lastName,email} = state;
     return{
         firstName,
@@ -28,4 +29,4 @@ function mapStateToProp(state){
         email
     }
 }
-export default connect(mapStateToProp,{updateFirstName,updateLastName,updateEmail})(WizardTen);
+export default connect(mapStateToProps,{updateFirstName,updateLastName,updateEmail})(WizardTen);
